@@ -4,6 +4,7 @@ version = "1.0.0"
 description = "A module that forces functions to be type safe."
 authors = ["Ethan Illingsworth <illingsworth.ethan@gmail.com>"]
 readme = "README.md"
+license = "MIT License"
 
 [tool.poetry.dependencies]
 python = "^3.8"
