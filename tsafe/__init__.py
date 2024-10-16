@@ -13,14 +13,14 @@ def type_safe(func):
                 reqType = list(func.__annotations__.values())[index]
                 
                 if type(arg) == reqType or reqType == object:
-                    return func()
+                    continue
                 else:
                     flag = False
                     raise Exception(f"argument {arg} is not type of {reqType}")
                     break
         
         if flag:
-            func(*args, **kwargs)
+            return func(*args, **kwargs)
 
     return force_safety
 
