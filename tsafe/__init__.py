@@ -34,15 +34,3 @@ def type_safe(func):
     return force_safety
 
 safe = type_safe
-
-
-class Test():
-    def __init__(self):
-        self.zero = 0
-    @safe
-    def test(self, x: str = "hello"):
-        print(x)
-
-test = Test()
-
-test.test()
