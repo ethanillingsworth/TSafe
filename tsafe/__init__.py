@@ -1,5 +1,30 @@
 from inspect import signature
 
+class StringList():
+    REQTYPE = str
+    def __init__(self):
+        return
+
+class IntList():
+    REQTYPE = int
+    def __init__(self):
+        return
+
+class FloatList():
+    REQTYPE = float
+    def __init__(self):
+        return
+
+class ComplexList():
+    REQTYPE = complex
+    def __init__(self):
+        return
+
+class BoolList():
+    REQTYPE = float
+    def __init__(self):
+        return
+
 def type_safe(func):
     """
     Wrapper function to force a function to be type safe
@@ -17,11 +42,25 @@ def type_safe(func):
                     reqType = list(func.__annotations__.values())[index - 1]
 
                 # skip self if in class
-                if func.__qualname__ and not classCheck:
+                if func.__qualname__ and 'self' in signature(func).parameters and not classCheck:
                     classCheck = True
                     continue
 
-                if type(arg) == reqType or reqType == object:
+                if type(arg) == list:
+                    listTypes = [StringList, IntList, FloatList, ComplexList, BoolList]
+                    for l in listTypes:
+                        
+                        if (reqType == l and all(type(x) == l.REQTYPE for x in arg)) or reqType == list:
+                            flag = True
+                            break
+                        else:
+                            flag = False
+
+                    if not flag:
+                        raise Exception(f"argument {arg} is not type of {reqType}")
+                        break
+
+                elif type(arg) == reqType or reqType == object:
                     continue
                 else:
                     flag = False
