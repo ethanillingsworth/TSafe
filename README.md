@@ -43,7 +43,7 @@ hello_x("World")
 # works normally
 # output: "Hello World"
 
-hello_x(10)
+hello_x(12)
 # throws error since int is not type str
 # output: Exception: argument 12 is not type of <class 'str'>
 
