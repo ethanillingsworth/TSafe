@@ -74,14 +74,3 @@ def type_safe(func):
     return force_safety
 
 safe = type_safe
-
-class Hello():
-    @safe
-    def __init__(self, x: int):
-        print(x)
-
-    @safe
-    def hello(self, b: StringList, c: bool=True):
-        print(1)
-
-Hello(10).hello(["world"], False)
